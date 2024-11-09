@@ -1,0 +1,17 @@
+<!-- ~/catkin_ws/src/turtle_follower/launch/follow_turtles.launch -->
+<launch>
+    <!-- 启动 turtlesim_node -->
+    <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+
+    <!-- 调用 /spawn 服务，创建第二只乌龟 -->
+    <node pkg="turtle_follower" type="spawn_turtle.py" name="spawn_turtle" output="screen"/>
+<!--     <node pkg="turtlesim" type="spawn" name="spawn_turtle1"> -->
+<!--         <param name="x" value="5.0"/> -->
+<!--         <param name="y" value="5.0"/> -->
+<!--         <param name="theta" value="0.0"/> -->
+<!--         <param name="name" value="turtle2"/> -->
+<!--     </node> -->
+
+    <!-- 启动跟随脚本 -->
+    <node pkg="turtle_follower" type="turtle_follow.py" name="turtle_follow" output="screen"/>
+</launch>
